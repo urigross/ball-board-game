@@ -8,19 +8,19 @@ var intervalId2;
 var intervalId3;
 
 
-var GAMER_IMG = '<img src="img/gamer.png" />';
-var BALL_IMG = '<img src="img/ball.png" />';
-var GLUE_IMG = '<img src ="img/candy.png" />';
+var GAMER_IMG = '<img src="gamer.png" />';
+var BALL_IMG = '<img src="ball.png" />';
+var GLUE_IMG = '<img src ="candy.png" />';
 var gBoard;
 var gCurrentBallsCount;
 var gTotalBallsCollected;
 var gBallTimer = 2 * 1000;
 var gIsWin;
 // Game sounds
-var gameMusic = new Audio('wav/play-with-me.mp3');
-var clickSound = new Audio('wav/click.wav');
+var gameMusic = new Audio('play-with-me.mp3');
+var clickSound = new Audio('click.wav');
 var winSound = new Audio('https://opengameart.org/sites/default/files/Win%20sound.mp3');
-var squish = new Audio('wav/squish.mp3');
+var squish = new Audio('squish.mp3');
 // Board Central Positions
 var gICenterCell;
 var gJCenterCell;
@@ -28,7 +28,6 @@ var gIsUserGlued = false;
 var gIsGlueOnDOM = false;
 
 function init() {
-    gameMusic.play();
     gIsWin = false;
     gCurrentBallsCount = 0;
     gTotalBallsCollected = 0;
@@ -188,6 +187,7 @@ function win() {
 
 // Move the player to a specific location
 function moveTo(i, j) {
+	gameMusic.play();
     if (gIsWin || gIsUserGlued) return; // if it's a win - stop moving
     var targetCell = gBoard[i][j];
     if (targetCell.type === WALL) return;
